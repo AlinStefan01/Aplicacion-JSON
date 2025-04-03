@@ -1,0 +1,155 @@
+/* Estilo general para el contenedor */
+.contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px; /* Espaciado entre los cuadros */
+  margin: 30px auto; /* Margen superior e inferior */
+  max-width: 1200px; /* Limitar el ancho máximo del contenedor */
+  padding: 20px;
+}
+
+/* Estilo para cada cuadro (caja que contiene la planta) */
+.cuadro {
+  background-color: #97c5ac; /* Color de fondo más suave */
+  padding: 20px;
+  width: 280px; /* Ancho de cada cuadro */
+  border-radius: 15px; /* Bordes redondeados más suaves */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra más profunda */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transición suave al pasar el mouse */
+}
+
+/* Hover para el cuadro */
+.cuadro:hover {
+  transform: translateY(-10px); /* Efecto de desplazamiento al pasar el mouse */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15); /* Sombra más intensa al pasar el mouse */
+}
+
+/* Estilo para el nombre de la planta */
+.nombre {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000; /* Color de texto más oscuro */
+  margin-bottom: 12px; /* Espaciado debajo del nombre */
+}
+
+/* Estilo para el ID de la planta */
+.id {
+  font-size: 16px;
+  color: #000000; /* Gris suave para el ID */
+  margin-top: 8px; /* Espaciado encima del ID */
+}
+
+/* Estilo para la descripción de la planta */
+.descripcion {
+  background-color: #ffffff;
+  color: #000000;
+  padding: 12px;
+  border-radius: 10px; /* Bordes redondeados para la descripción */
+  margin-top: 15px; /* Espaciado entre la descripción y otros elementos */
+  font-size: 14px;
+  text-align: justify; /* Justificado para un mejor aspecto en la descripción */
+}
+
+/* Estilo para el nombre científico */
+.nombre-cientifico {
+  font-size: 16px;
+  font-style: italic; /* Poner en cursiva */
+  margin-top: 8px;
+  color: #000000; 
+}
+
+/* Estilos para las cabeceras (h2 y h3) */
+h2 {
+  font-size: 22px;
+  font-weight: bold;
+  color: #000000; /* Color oscuro para la cabecera */
+}
+
+h3 {
+  color: #0e0d0d; /* Gris suave para el ID de la especie */
+  font-size: 16px;
+}
+
+/* Fondo de la página */
+body {
+  background-image: url("https://t4.ftcdn.net/jpg/01/01/78/03/360_F_101780352_I3bDsI4PGZ8hSOYxnknHS1vNp5cWokfw.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: 'Arial', sans-serif; /* Fuente más profesional */
+  color: #333; /* Color del texto por defecto */
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* Estilo del contenedor principal */
+.contenedor {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Estilo del buscador (select de continente) */
+.select-container {
+  text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.select-container label {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-right: 10px;
+}
+
+/* Estilo para el select del continente */
+select {
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 250px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+select:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* Estilo para las opciones del select */
+option {
+  font-size: 1rem;
+  padding: 10px;
+  background-color: #fff;
+}
+
+/* Estilo para el botón de filtro */
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

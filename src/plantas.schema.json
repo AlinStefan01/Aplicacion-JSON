@@ -1,0 +1,39 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+      "especie_id": {
+        "type": "string"
+      },
+      "nom_ctf": {
+        "type": "string"
+      },
+      "nom_cat": {
+        "type": "string"
+      },
+      "nom_cas": {
+        "type": "string"
+      },
+      "nom_eng": {
+        "type": "string"
+      },
+      "desc_cat": {
+        "type": "string"
+      },
+      "desc_cas": {
+        "type": "string"
+      },
+      "desc_eng": {
+        "type": "string"
+      },
+      "id_continente":{
+        "type": "string"
+      }
+    },
+    "required": [
+    "especie_id",
+    "nom_ctf",
+    "nom_cas",
+    "id_continente"
+  ]  
+  }

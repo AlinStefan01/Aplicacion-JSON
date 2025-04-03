@@ -1,0 +1,37 @@
+[
+  {
+    "id_continente": "1",
+    "nombre_continente": "Asia"
+  
+  },
+  
+  {
+  
+  "id_continente": "2",
+    "nombre_continente": "Europa"
+  
+  },
+  
+  {
+  
+  "id_continente": "3",
+    "nombre_continente": "Africa"
+  
+  },
+  
+  {
+  
+  "id_continente": "4",
+    "nombre_continente": "Oceania"
+  
+  },
+  
+  {
+  "id_continente": "5",
+    "nombre_continente": "America"
+  
+  
+  }
+  
+  
+  ]
