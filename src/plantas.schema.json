@@ -25,15 +25,11 @@
       },
       "desc_eng": {
         "type": "string"
-      },
-      "id_continente":{
-        "type": "string"
       }
     },
     "required": [
     "especie_id",
     "nom_ctf",
-    "nom_cas",
-    "id_continente"
+    "nom_cas"
   ]  
   }

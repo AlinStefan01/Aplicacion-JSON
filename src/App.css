@@ -63,6 +63,19 @@
   color: #000000; 
 }
 
+h1 {
+  font-size: 2.5rem;  /* Tamaño grande y prominente */
+  font-weight: 700;  /* Negrita para darle más énfasis */
+  color: #ffffff;  /* Blanco para que resalte sobre fondos oscuros */
+  text-align: center;  /* Centrado en la página */
+  margin: 20px 0;  /* Margen superior e inferior */
+  text-transform: uppercase;  /* Convertir texto a mayúsculas */
+  letter-spacing: 2px;  /* Espaciado entre letras para un efecto más elegante */
+  font-family: 'Arial', sans-serif;  /* Fuente moderna y legible */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);  /* Sombra sutil para hacerlo resaltar */
+}
+
+
 /* Estilos para las cabeceras (h2 y h3) */
 h2 {
   font-size: 22px;
@@ -152,4 +165,16 @@ button {
 
 button:hover {
   background-color: #0056b3;
+}
+
+/* Estilo para el label */
+label {
+  font-size: 1.2rem;  /* Tamaño de fuente moderado */
+  font-weight: 600;  /* Negrita para darle un poco de énfasis */
+  color: #ffffff;  /* Blanco para que resalte sobre el fondo */
+  margin-right: 10px;  /* Espaciado a la derecha del label */
+  display: inline-block;  /* Hace que el label se comporte como un bloque en línea */
+  text-transform: capitalize;  /* Convierte la primera letra de cada palabra a mayúscula */
+  font-family: 'Arial', sans-serif;  /* Fuente clara y moderna */
+  letter-spacing: 0.5px;  /* Espaciado entre las letras para hacerlo más legible */
 }

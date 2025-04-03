@@ -1,42 +1,59 @@
 import React, { useState, useEffect } from "react";
-import { plantasFiltradas } from "./importarDatos";  // Asegúrate de importar las plantas
-import { continentes } from "./importarDatos"; // Asegúrate de importar los continentes
+import { plantasFiltradas, continentes } from "./importarDatos"; // Asegúrate de importar las plantas
+import Ajv from "ajv";
+import schema from "./plantas.schema.json";
+
+const ajv = new Ajv();
+const validate = ajv.compile(schema);
 
 const App = () => {
-  const [plantasConContinente, setPlantasConContinente] = useState<any[]>([]);  // Estado para plantas con continente
-  const [continenteSeleccionado, setContinenteSeleccionado] = useState("");  // Estado para continente seleccionado
+  const [plantasConContinente, setPlantasConContinente] = useState<any[]>([]);  // Utilizamos 'any' para poder manejar el continente dinámicamente
+  const [continenteSeleccionado, setContinenteSeleccionado] = useState("");
+  const [validPlantas, setValidPlantas] = useState<any[]>([]);  // Usamos 'any' también para plantas válidas
 
-  // Función para obtener el continente según el nombre de la planta
+  // Función para obtener el continente basado en el nombre de la planta
   const obtenerContinente = (nombre: string) => {
     for (let continente of continentes) {
       if (nombre.toLowerCase().includes(continente.nombre_continente.toLowerCase())) {
-        return continente.nombre_continente;  // Retorna el continente si hay coincidencia
+        return continente.nombre_continente;
       }
     }
-    return "Desconocido";  // Si no hay coincidencia, retorna "Desconocido"
+    return ""; // Si no se encuentra el continente, devolver vacío
   };
 
-  // Filtrar las plantas y asignar el continente
   useEffect(() => {
-    const plantasConContinenteData = plantasFiltradas.map((planta) => {
-      const continente = obtenerContinente(planta.nom_cas);  // Usamos el nombre común de la planta
-      return { ...planta, continente };  // Añadimos el continente a cada planta
-    });
+    if (!Array.isArray(plantasFiltradas)) {
+      console.error("Error: plantasFiltradas no es un array válido.");
+      return;
+    }
 
-    setPlantasConContinente(plantasConContinenteData);  // Guardamos las plantas con continente
-  }, []);
+    const validPlantasData = plantasFiltradas
+      .map((planta) => {
+        // Asignar continente si el nombre de la planta contiene el nombre de un continente
+        const continente = obtenerContinente(planta.nom_cas); // Obtiene el continente del nombre
+        const plantaConContinente = { ...planta, continente };
 
-  // Filtrar las plantas según el continente seleccionado
+        // Validar planta
+        const valid = validate(plantaConContinente);
+        if (valid) {
+          console.log("Planta válida:", plantaConContinente);
+          return plantaConContinente; // Retorna la planta si es válida
+        } else {
+          console.error("Planta no válida:", plantaConContinente, validate.errors);
+          return null; // Si no es válida, retorna null
+        }
+      })
+      .filter((planta) => planta !== null); // Eliminar las plantas no válidas
+
+    setValidPlantas(validPlantasData);
+  }, []); // Solo se ejecuta una vez al montar el componente
+
+  // Filtrar plantas por continente seleccionado (si es que se ha seleccionado uno)
   const plantasFiltradasPorContinente = continenteSeleccionado
-    ? plantasConContinente.filter(
-        (planta) => planta.continente === continenteSeleccionado
+    ? validPlantas.filter((planta) =>
+        planta.continente.toLowerCase() === continenteSeleccionado.toLowerCase()
       )
-    : plantasConContinente;
-
-  // Eliminar duplicados por especie_id (evitar que las plantas se repitan)
-  const plantasUnicas = Array.from(
-    new Map(plantasFiltradasPorContinente.map((planta) => [planta.especie_id, planta])).values()
-  );
+    : validPlantas;
 
   return (
     <div>
@@ -55,19 +72,25 @@ const App = () => {
       </select>
 
       <div className="contenedor">
-        {plantasUnicas.map((planta) => (
-          <div key={planta.especie_id} className="cuadro">
-            <h2>{planta.nom_cas}</h2>
-            <h3>Continente: {planta.continente}</h3>
-            <p>{planta.desc_cas}</p>
-          </div>
-        ))}
+        {plantasFiltradasPorContinente.length > 0 ? (
+          plantasFiltradasPorContinente.map((planta) => (
+            <div key={planta.especie_id} className="cuadro">
+              <h2>{planta.nom_cas}</h2>
+              <h3>Continente: {planta.continente || "Desconocido"}</h3>
+              <p>{planta.desc_cas || "Descripción no disponible"}</p>
+            </div>
+          ))
+        ) : (
+          <p>No hay plantas disponibles.</p>
+        )}
       </div>
     </div>
   );
 };
 
+
 export default App;
+
 
 
 
